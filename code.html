@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J&J - Indumentaria y Perfumería Femenina</title>
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #000000;
+            --secondary: #D4AF37;
+            --light: #F5F5F5;
+            --dark: #1A1A1A;
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset y Tipografía */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 70px;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f7b7ad9-1c63-4040-b949-9828f8e1988d.png') no-repeat center center/cover;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        /* Secciones */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Productos */
+        .products {
+            padding: 3rem 0;
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .category-btn.active {
+            background-color: var(--primary);
+            color: var(--secondary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 3rem 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+        }
+
+        .footer-logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter button {
+            background-color: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 0.8rem;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter button:hover {
+            opacity: 0.9;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .product-categories {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/Users/javiermarino/Downloads/web J&J/logoWeb.png" alt="Logo de Lumina - Letra L estilizada en dorado sobre fondo negro con detalles elegantes" style="width: 70px; height: 70px;">
+                <!-- <span class="logo-text">J&J</span> -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#clothing">Indumentaria</a></li>
+                    <li><a href="#perfumery">Perfumería</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Elegancia en cada detalle</h1>
+            <p>Descubre nuestra exclusiva colección de indumentaria y perfumería diseñada para la mujer sofisticada de hoy.</p>
+            <a href="#clothing" class="btn">Explorar colección</a>
+        </div>
+    </section>
+
+    <!-- Clothing Section -->
+    <section class="products" id="clothing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Indumentaria</h2>
+            </div>
+            <div class="product-categories">
+                <button class="category-btn active">Todo</button>
+                <button class="category-btn">Pijamas</button>
+                <button class="category-btn">Bikinis</button>
+                <button class="category-btn">Bodys</button>
+                <button class="category-btn">Lenceria</button>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5a398594-5373-4a6e-aa84-a08f83b3bbb5.png" alt="Vestido negro de noche con detalles dorados en los hombros, modelo elegante posando">
+                        <span class="product-badge">Nuevo</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Vestido Elegance Noir</h3>
+                        <div class="product-price">$12,999</div>
+                        <p class="product-description">Vestido de noche sofisticado con detalles dorados y corte sirena.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a49d2691-59fa-459d-96ca-0055268f47ef.png" alt="Conjunto de dos piezas negro con blusa de seda y falda midi dorada, estilo contemporáneo">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Conjunto Golden Touch</h3>
+                        <div class="product-price">$9,500</div>
+                        <p class="product-description">Set de dos piezas en negro y dorado perfecto para eventos especiales.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0d847dea-28db-4e0f-a74c-551d434c5365.png" alt="Blusa negra de seda con estampado dorado geométrico, estilo moderno">
+                        <span class="product-badge">25% OFF</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Blusa Silk Gold</h3>
+                        <div class="product-price">$5,999</div>
+                        <p class="product-description">Blusa de seda natural con exclusivo estampado geométrico dorado.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0dcbb372-d8e4-4792-9539-0a4ef67080c4.png" alt="Bolso negro de cuero con broche dorado y cadenas, estilo elegante">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Bolso Chic Noir</h3>
+                        <div class="product-price">$8,200</div>
+                        <p class="product-description">Bolso de cuero italiano con detalles dorados y diseño atemporal.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfumery Section -->
+    <section class="products" id="perfumery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perfumería</h2>
+            </div>
+            <div class="product-categories">
+                <button class="category-btn active">Todo</button>
+                <button class="category-btn">Arabes</button>
+                <button class="category-btn">Diseñador</button>
+                <!-- <button class="category-btn">Edición Limitada</button> -->
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ce1efab2-0de2-40dc-878c-ca5c9b28bc87.png" alt="Perfume dorado en frasco elegante con tapón negro, sobre fondo de terciopelo negro">
+                        <span class="product-badge">Más vendido</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Eau de Lumière</h3>
+                        <div class="product-price">$15,200</div>
+                        <p class="product-description">Fragancia floral-amaderada con notas de jazmín, sándalo y vainilla.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d990c16f-d2db-4f7e-a59c-f5d8e13497a5.png" alt="Set de perfumería con tres frascos dorados de diferentes tamaños en caja negra de lujo">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Trilogía Dorada</h3>
+                        <div class="product-price">$22,800</div>
+                        <p class="product-description">Exclusiva colección de tres fragancias en elegante estuche regalo.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5d9a41de-482d-4376-8b45-f6f07ed8907a.png" alt="Fragancia femenina en frasco negro con detalles dorados, sobre mesa de mármol">
+                        <span class="product-badge">Nuevo</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Noir Essence</h3>
+                        <div class="product-price">$17,500</div>
+                        <p class="product-description">Fragancia misteriosa con notas de pachulí, rosa negra y ámbar.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/34416e2a-7503-425f-b2ae-bcc7b3df8164.png" alt="Kit de viaje con mini perfumes dorados en estuche de cuero negro para tocador elegante">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Travel Golden Set</h3>
+                        <div class="product-price">$14,999</div>
+                        <p class="product-description">Set de viaje con cuatro fragancias en miniatura y estuche de cuero.</p>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h3>Suscríbete a nuestro newsletter</h3>
+                <p>Recibe exclusivas ofertas y novedades sobre nuestras colecciones.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit" class="btn">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5897c088-754a-42ff-bd03-ba008cb7ae7b.png" alt="Logo pequeño de Lumina - Letra L estilizada en dorado sobre fondo negro">
+                        <span class="footer-logo-text">J&J</span>
+                    </div>
+                    <p>Tienda de indumentaria y perfumería femenina donde la elegancia y el estilo se encuentran.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <!-- <a href="#" class="social-icon">TW</a> -->
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#clothing">Indumentaria</a></li>
+                        <li><a href="#perfumery">Perfumería</a></li>
+                        <li><a href="#">Nueva colección</a></li>
+                        <li><a href="#">Ofertas especiales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Envios y devoluciones</a></li>
+                        <li><a href="#">Guía de talles</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="#">Altos del Cevil 1 - I15</a></li>
+                        <li><a href="#">Yerba Buena - Tucumán</a></li>
+                        <li><a href="#">jyj@gmail.com</a></li>
+                        <li><a href="#">+54 3814478843</a></li>
+                        <li><a href="#contact">Formulario de contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 J&J. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactividad para los botones de categoría
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Efecto suave para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Validación del formulario de newsletter
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email && email.includes('@')) {
+                    alert('Gracias por suscribirte a nuestro newsletter.');
+                    this.reset();
+                } else {
+                    alert('Por favor ingresa un correo electrónico válido.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
