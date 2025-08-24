@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J&J - Indumentaria y Perfumería Femenina</title>
+    <link rel="stylesheet" href="/Users/javiermarino/Downloads/web J&J/font-awesome-4.7.0/css/font-awesome.min.css">
     <style>
         /* Variables CSS */
         :root {
             --primary: #000000;
             --secondary: #D4AF37;
+            --tertiary:#FFFFFF;
             --light: #F5F5F5;
             --dark: #1A1A1A;
             --text-dark: #333333;
@@ -79,7 +81,7 @@
         }
 
         nav a {
-            color: var(--text-light);
+            color: black;
             text-decoration: none;
             font-weight: 500;
             letter-spacing: 1px;
@@ -111,7 +113,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f7b7ad9-1c63-4040-b949-9828f8e1988d.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/Users/javiermarino/Downloads/web J&J/imgTienda.png') no-repeat center center/cover;
             color: var(--text-light);
             display: flex;
             flex-direction: column;
@@ -326,8 +328,9 @@
         }
 
         .footer-logo img {
-            height: 40px;
+            height: 60px;
             filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+            padding-left: 70px;
         }
 
         .footer-logo-text {
@@ -482,10 +485,10 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header style="background: white;">
         <div class="container header-container">
             <div class="logo">
-                <img src="logoWeb.png" alt="Logo de Lumina - Letra L estilizada en dorado sobre fondo negro con detalles elegantes" style="width: 70px; height: 70px;">
+                <img src="/Users/javiermarino/Downloads/web J&J/logoWeb-sinFondo.png" alt="Logo de Lumina - Letra L estilizada en dorado sobre fondo negro con detalles elegantes" style="width: 70px; height: 70px;">
                 <!-- <span class="logo-text">J&J</span> -->
             </div>
             <nav>
@@ -524,14 +527,14 @@
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5a398594-5373-4a6e-aa84-a08f83b3bbb5.png" alt="Vestido negro de noche con detalles dorados en los hombros, modelo elegante posando">
-                        <span class="product-badge">Nuevo</span>
+                        <img src="/Users/javiermarino/Downloads/web J&J/imgWebJ&J.png" alt="Pijama largo animal print de saten">
+                        <span class="product-badge">25% OFF</span>
                     </div>
                     <div class="product-details">
-                        <h3 class="product-title">Vestido Elegance Noir</h3>
-                        <div class="product-price">$12,999</div>
-                        <p class="product-description">Vestido de noche sofisticado con detalles dorados y corte sirena.</p>
-                        <button class="add-to-cart">Añadir al carrito</button>
+                        <h3 class="product-title">Pijama largo Animal Print</h3>
+                        <div class="product-price">$65.000<span>&nbsp;&nbsp;<s style="color: gray; font-size: 15px;">antes: $86.666</s></span></div>
+                        <p class="product-description">Pijama largo Animal Print de Saten.</p>
+                        <!-- <button class="add-to-cart">Añadir al carrito</button> -->
                     </div>
                 </div>
                 <div class="product-card">
@@ -635,11 +638,18 @@
         </div>
     </section>
 
+    <hr style="
+  height: 3px;
+  width: 100%;
+  background-color: black;
+">
+
+<br>
     <!-- Newsletter Section -->
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-box">
-                <h3>Suscríbete a nuestro newsletter</h3>
+                <h1>Suscríbete a nuestro newsletter</h3>
                 <p>Recibe exclusivas ofertas y novedades sobre nuestras colecciones.</p>
                 <form class="newsletter-form">
                     <input type="email" placeholder="Tu correo electrónico">
@@ -649,19 +659,23 @@
         </div>
     </section>
 
+    <br>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5897c088-754a-42ff-bd03-ba008cb7ae7b.png" alt="Logo pequeño de Lumina - Letra L estilizada en dorado sobre fondo negro">
-                        <span class="footer-logo-text">J&J</span>
+                        <img src="/Users/javiermarino/Downloads/web J&J/logoWeb.png" alt="Logo pequeño de J&J - Letra L estilizada en dorado sobre fondo negro">
+                        <!-- <span class="footer-logo-text">J&J</span> -->
                     </div>
                     <p>Tienda de indumentaria y perfumería femenina donde la elegancia y el estilo se encuentran.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon">FB</a>
-                        <a href="#" class="social-icon">IG</a>
+                        <i class="fa fa-facebook-official social-icon" aria-hidden="true"></i>
+                        <!-- <a href="#" class="social-icon">FB</a> -->
+                        <i class="fa fa-instagram social-icon" aria-hidden="true"></i>
+                        <!-- <a href="#" class="social-icon">IG</a> -->
                         <!-- <a href="#" class="social-icon">TW</a> -->
                     </div>
                 </div>
